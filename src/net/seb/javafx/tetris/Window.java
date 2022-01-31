@@ -4,9 +4,8 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
-import net.seb.javafx.tetris.forms.Form;
+import net.seb.javafx.tetris.forms.Tetromino;
 import net.seb.javafx.tetris.utils.Constants;
 
 public class Window {
@@ -32,7 +31,7 @@ public class Window {
 
 
         pane.getChildren().addAll(line, scoreText, linesCompleted);
-        Form i = new Form("t", 3);
+        Tetromino i = new Tetromino("t");
         pane.getChildren().addAll(i.getA(), i.getB(), i.getC(), i.getD());
 
         Scene scene = new Scene(pane, Constants.WIDTH + 150, Constants.HEIGHT);

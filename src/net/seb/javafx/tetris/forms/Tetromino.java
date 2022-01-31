@@ -5,10 +5,12 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import net.seb.javafx.tetris.utils.Constants;
 
-public class Form {
+public class Tetromino {
 
     private Rectangle a, b, c, d;
     private String name;
+    private int xPosition;
+    private int yPosition;
     private int position;
 
     private void setColor(Color color) {
@@ -18,7 +20,7 @@ public class Form {
         this.d.setFill(color);
     }
 
-    public Form(String name) {
+    public Tetromino(String name) {
         this.name = name;
         this.position = 0;
         this.a = new Rectangle(Constants.BOX_SIZE - 1, Constants.BOX_SIZE - 1);
@@ -28,32 +30,35 @@ public class Form {
         switch (name) {
             case "i":
                 setColor(Color.LIGHTBLUE);
-                this.a.setX(Constants.WIDTH / 2 - Constants.BOX_SIZE);
+                this.a.setX(Constants.WIDTH / 2 - 2 * Constants.BOX_SIZE);
                 this.b.setX(Constants.WIDTH / 2 - Constants.BOX_SIZE);
-                this.c.setX(Constants.WIDTH / 2 - Constants.BOX_SIZE);
-                this.d.setX(Constants.WIDTH / 2 - Constants.BOX_SIZE);
+                this.c.setX(Constants.WIDTH / 2);
+                this.d.setX(Constants.WIDTH / 2 + Constants.BOX_SIZE);
+                this.a.setY(Constants.BOX_SIZE);
                 this.b.setY(Constants.BOX_SIZE);
-                this.c.setY(2 * Constants.BOX_SIZE);
-                this.d.setY(3 * Constants.BOX_SIZE);
+                this.c.setY(Constants.BOX_SIZE);
+                this.d.setY(Constants.BOX_SIZE);
                 break;
             case "j":
                 setColor(Color.DARKBLUE);
-                this.a.setX(Constants.WIDTH / 2 - Constants.BOX_SIZE);
+                this.a.setX(Constants.WIDTH / 2 - 2 * Constants.BOX_SIZE);
                 this.b.setX(Constants.WIDTH / 2 - Constants.BOX_SIZE);
-                this.c.setX(Constants.WIDTH / 2 - Constants.BOX_SIZE);
-                this.d.setX(Constants.WIDTH / 2 - 2 * Constants.BOX_SIZE);
+                this.c.setX(Constants.WIDTH / 2);
+                this.d.setX(Constants.WIDTH / 2);
+                this.a.setY(Constants.BOX_SIZE);
                 this.b.setY(Constants.BOX_SIZE);
-                this.c.setY(2 * Constants.BOX_SIZE);
+                this.c.setY(Constants.BOX_SIZE);
                 this.d.setY(2 * Constants.BOX_SIZE);
                 break;
             case "l":
                 setColor(Color.ORANGE);
-                this.a.setX(Constants.WIDTH / 2 - Constants.BOX_SIZE);
+                this.a.setX(Constants.WIDTH / 2);
                 this.b.setX(Constants.WIDTH / 2 - Constants.BOX_SIZE);
-                this.c.setX(Constants.WIDTH / 2 - Constants.BOX_SIZE);
-                this.d.setX(Constants.WIDTH / 2);
+                this.c.setX(Constants.WIDTH / 2 - 2 * Constants.BOX_SIZE);
+                this.d.setX(Constants.WIDTH / 2 - 2 * Constants.BOX_SIZE);
+                this.a.setY(Constants.BOX_SIZE);
                 this.b.setY(Constants.BOX_SIZE);
-                this.c.setY(2 * Constants.BOX_SIZE);
+                this.c.setY(Constants.BOX_SIZE);
                 this.d.setY(2 * Constants.BOX_SIZE);
                 break;
             case "o":
@@ -67,35 +72,41 @@ public class Form {
                 break;
             case "s":
                 setColor(Color.GREEN);
-                this.a.setX(Constants.WIDTH / 2);
-                this.b.setX(Constants.WIDTH / 2 - Constants.BOX_SIZE);
-                this.c.setX(Constants.WIDTH / 2 - Constants.BOX_SIZE);
-                this.d.setX(Constants.WIDTH / 2 - 2 * Constants.BOX_SIZE);
-                this.c.setY(Constants.BOX_SIZE);
-                this.d.setY(Constants.BOX_SIZE);
-                break;
-            case "z":
-                setColor(Color.RED);
                 this.a.setX(Constants.WIDTH / 2 - 2 * Constants.BOX_SIZE);
                 this.b.setX(Constants.WIDTH / 2 - Constants.BOX_SIZE);
                 this.c.setX(Constants.WIDTH / 2 - Constants.BOX_SIZE);
                 this.d.setX(Constants.WIDTH / 2);
-                this.c.setY(Constants.BOX_SIZE);
-                this.d.setY(Constants.BOX_SIZE);
+                this.a.setY(Constants.BOX_SIZE);
+                this.b.setY(Constants.BOX_SIZE);
+                this.c.setY(2 * Constants.BOX_SIZE);
+                this.d.setY(2 * Constants.BOX_SIZE);
+                break;
+            case "z":
+                setColor(Color.RED);
+                this.a.setX(Constants.WIDTH / 2);
+                this.b.setX(Constants.WIDTH / 2 - Constants.BOX_SIZE);
+                this.c.setX(Constants.WIDTH / 2 - Constants.BOX_SIZE);
+                this.d.setX(Constants.WIDTH / 2 - 2 * Constants.BOX_SIZE);
+                this.a.setY(Constants.BOX_SIZE);
+                this.b.setY(Constants.BOX_SIZE);
+                this.c.setY(2 * Constants.BOX_SIZE);
+                this.d.setY(2 * Constants.BOX_SIZE);
                 break;
             case "t":
                 setColor(Color.MAGENTA);
-                this.a.setX(Constants.WIDTH / 2 - Constants.BOX_SIZE);
-                this.b.setX(Constants.WIDTH / 2 - 2 * Constants.BOX_SIZE);
-                this.c.setX(Constants.WIDTH / 2 - Constants.BOX_SIZE);
-                this.d.setX(Constants.WIDTH / 2);
+                this.a.setX(Constants.WIDTH / 2 - 2 * Constants.BOX_SIZE);
+                this.b.setX(Constants.WIDTH / 2 - Constants.BOX_SIZE);
+                this.c.setX(Constants.WIDTH / 2);
+                this.d.setX(Constants.WIDTH / 2 - Constants.BOX_SIZE);
+                this.a.setY(Constants.BOX_SIZE);
                 this.b.setY(Constants.BOX_SIZE);
                 this.c.setY(Constants.BOX_SIZE);
-                this.d.setY(Constants.BOX_SIZE);
+                this.d.setY(2 * Constants.BOX_SIZE);
                 break;
         }
     }
 
+    /*
     public Form(String name, int position) {
         this.name = name;
         this.position = position;
@@ -106,7 +117,7 @@ public class Form {
         switch (name) {
             case "i":
                 setColor(Color.LIGHTBLUE);
-                if (position == 0 || position == 2) {
+                if (position == 0) {
                     this.a.setX(Constants.WIDTH / 2 - Constants.BOX_SIZE);
                     this.b.setX(Constants.WIDTH / 2 - Constants.BOX_SIZE);
                     this.c.setX(Constants.WIDTH / 2 - Constants.BOX_SIZE);
@@ -115,10 +126,10 @@ public class Form {
                     this.c.setY(2 * Constants.BOX_SIZE);
                     this.d.setY(3 * Constants.BOX_SIZE);
                 } else {
-                    this.a.setX(Constants.WIDTH / 2 - 2 * Constants.BOX_SIZE);
-                    this.b.setX(Constants.WIDTH / 2 - Constants.BOX_SIZE);
-                    this.c.setX(Constants.WIDTH / 2);
-                    this.d.setX(Constants.WIDTH / 2 + Constants.BOX_SIZE);
+                    this.a.setX(Constants.WIDTH / 2 - 3 * Constants.BOX_SIZE);
+                    this.b.setX(Constants.WIDTH / 2 - 2 * Constants.BOX_SIZE);
+                    this.c.setX(Constants.WIDTH / 2 - Constants.BOX_SIZE);
+                    this.d.setX(Constants.WIDTH / 2);
                 }
                 break;
             case "j":
@@ -270,6 +281,7 @@ public class Form {
                 break;
         }
     }
+    */
 
     public Rectangle getA() {
         return a;
@@ -285,5 +297,17 @@ public class Form {
 
     public Rectangle getD() {
         return d;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
     }
 }
